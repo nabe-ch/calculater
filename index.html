@@ -9,7 +9,9 @@
 </head>
 <body>
     <!-- 表示画面 -->
+     <h1>電卓ソフト My calculation</h1>
     <input type="text" class="monitor" value="0" disabled>
+    
     <!-- キーボード -->
     <div class="keyBoad">
         <!-- 計算ボタン -->
@@ -25,16 +27,16 @@
         <!-- ナンバーキー -->
         <div >
             <ul class="number">
-                <li class="numberButton"><button class="nine">9</button></li>
-                <li class="numberButton"><button class="eight">8</button></li>
-                <li class="numberButton"><button class="seven">7</button></li>
-                <li class="numberButton"><button class="six">6</button></li>
-                <li class="numberButton"><button class="five">5</button></li>
-                <li class="numberButton"><button class="four">4</button></li>
-                <li class="numberButton"><button class="three">3</button></li>
-                <li class="numberButton"><button class="two">2</button></li>
-                <li class="numberButton"><button class="one">1</button></li>
-                <li class="numberButton zeroButton"><button class="zero">0</button></li>
+                <li class="numberButton"><button class="nine" value="9">9</button></li>
+                <li class="numberButton"><button class="eight" value="8">8</button></li>
+                <li class="numberButton"><button class="seven" value="7">7</button></li>
+                <li class="numberButton"><button class="six" value="6">6</button></li>
+                <li class="numberButton"><button class="five" value="5">5</button></li>
+                <li class="numberButton"><button class="four" value="4">4</button></li>
+                <li class="numberButton"><button class="three" value="3">3</button></li>
+                <li class="numberButton"><button class="two" value="2">2</button></li>
+                <li class="numberButton"><button class="one" value="1">1</button></li>
+                <li class="numberButton zeroButton"><button class="zero" value="0">0</button></li>
             </ul>
         </div>
         <!--リセット「C」キー -->
@@ -45,6 +47,10 @@
             <!-- イコールボタン -->
             <div class="equal">
                 <button class="equalButton">=</button>
+            </div>
+
+            <div class="back">
+                <button class="backButton">←</button>
             </div>
         </div>
     </div>
