@@ -46,7 +46,7 @@ document.addEventListener(("click"),(event)=>{
             console.log("連続のため表示しません");
             return;
             
-        }else{
+        }else{ 
             monitor.value = monitor.value + plus.value;
             console.log("プラス");
         };
