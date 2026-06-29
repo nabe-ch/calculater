@@ -39,7 +39,7 @@ document.addEventListener(("click"),(event)=>{
             monitor.value = 0;
         };
         //演算用ボタン
-    }else if(btn === plus){
+    }else if(btn === plus){　
         if(monitor.value == 0){
             monitor.value = 0;
         }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
