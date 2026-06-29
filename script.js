@@ -29,7 +29,7 @@ document.addEventListener(("click"),(event)=>{
         monitor.value = 0;
         console.log("リセットしました");
 
-    } else if(btn === equalButton){//計算用ボタン
+    } else if(btn === equalButton){//イコールボタン
         console.log("計算しました");
 
     } else if(btn === backButton){//後ろから１桁削除
@@ -40,13 +40,49 @@ document.addEventListener(("click"),(event)=>{
         };
         //演算用ボタン
     }else if(btn === plus){
-        console.log("プラス");
-    }else if(btn === minus){
-        console.log("マイナス");
+        if(monitor.value == 0){
+            monitor.value = 0;
+        }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+            console.log("連続のため表示しません");
+            return;
+            
+        }else{
+            monitor.value = monitor.value + plus.value;
+            console.log("プラス");
+        };
+        
+        }else if(btn === minus){
+         if(monitor.value == 0){
+            monitor.value = 0;
+        }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+            console.log("連続のため表示しません");
+            return;
+        }else{
+            monitor.value = monitor.value + minus.value;
+            console.log("マイナス");
+        };
+        
     }else if(btn === multi){
-        console.log("かける");
+         if(monitor.value == 0){
+            monitor.value = 0;
+        }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+            console.log("連続のため表示しません");
+            return;
+        }else{
+            monitor.value = monitor.value + multi.value;
+            console.log("かける");
+        };
+
     }else if(btn === division){
-        console.log("わる");    
+         if(monitor.value == 0){
+            monitor.value = 0;
+        }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+            console.log("連続のため表示しません");
+            return;
+        }else{
+            monitor.value = monitor.value + division.value;
+            console.log("わる");
+        };  
         
     }else{//oneの部分を全ボタン対応にする →クリア
         if(monitor.value == 0){//初期値が０なら消して数字を追加
