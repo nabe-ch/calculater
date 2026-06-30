@@ -1,13 +1,14 @@
-const one = document.querySelector(".one");
-const two = document.querySelector(".two");
-const three = document.querySelector(".three");
-const four = document.querySelector(".four");
-const five = document.querySelector(".five");
-const six = document.querySelector(".six");
-const seven = document.querySelector(".seven");
-const eight = document.querySelector(".eight");
-const nine = document.querySelector(".nine");
+// const one = document.querySelector(".one");
+// const two = document.querySelector(".two");
+// const three = document.querySelector(".three");
+// const four = document.querySelector(".four");
+// const five = document.querySelector(".five");
+// const six = document.querySelector(".six");
+// const seven = document.querySelector(".seven");
+// const eight = document.querySelector(".eight");
+// const nine = document.querySelector(".nine");
 const zero = document.querySelector(".zero");
+const point = document.querySelector(".point");
 const plus = document.querySelector(".plus");
 const minus = document.querySelector(".minus");
 const multi = document.querySelector(".multi");
@@ -30,7 +31,20 @@ document.addEventListener(("click"),(event)=>{
         console.log("リセットしました");
 
     } else if(btn === equalButton){//イコールボタン
-        console.log("計算しました");
+        try{
+            // monitor.value = eval(monitor.value);
+            // console.log("計算しました");
+            if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+                monitor.value = monitor.value.slice(0,-1);
+                console.log("演算子を削除しました");
+            };
+            monitor.value = eval(monitor.value);
+            console.log("計算完了");
+        } catch(error){
+            monitor.value ="ERROR";
+            console.log("計算エラーです");
+        };
+        
 
     } else if(btn === backButton){//後ろから１桁削除
         monitor.value = monitor.value.slice(0,-1)
@@ -39,13 +53,12 @@ document.addEventListener(("click"),(event)=>{
             monitor.value = 0;
         };
         //演算用ボタン
-    }else if(btn === plus){　
+    }else if(btn === plus){
         if(monitor.value == 0){
             monitor.value = 0;
         }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
             console.log("連続のため表示しません");
-            return;
-            
+            return;            
         }else{ 
             monitor.value = monitor.value + plus.value;
             console.log("プラス");
@@ -83,9 +96,22 @@ document.addEventListener(("click"),(event)=>{
             monitor.value = monitor.value + division.value;
             console.log("わる");
         };  
+//０より大きく１未満の計算時
+    }else if(btn === point){
+        if(monitor.value === 0){
+            monitor.value = monitor.value + point.value;
+        }else if(monitor.value.slice(-1) === "."){
+            return;
+        }else{
+            monitor.value = monitor.value + btn.value;
+            console.log(`${btn.value}を追加`);
+        };
+//０ボタンの連打制御
+    }else if(btn === zero && monitor.value === 0){
+        return;
         
     }else{//oneの部分を全ボタン対応にする →クリア
-        if(monitor.value == 0){//初期値が０なら消して数字を追加
+        if(monitor.value === "0"){//初期値が０なら消して数字を追加
             monitor.value = btn.value;
         }else{
             monitor.value = monitor.value + btn.value;
