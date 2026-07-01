@@ -26,7 +26,7 @@ document.addEventListener(("click"),(event)=>{
         return;
     };
 
-    if(btn === lisetButton){//モニターのリセット
+    if(btn === lisetButton){//リセットボタン
         monitor.value = 0;
         console.log("リセットしました");
 
@@ -117,5 +117,59 @@ document.addEventListener(("click"),(event)=>{
             monitor.value = monitor.value + btn.value;
             console.log(`${btn.value}を追加`);
         };
+    };
+});
+//テンキー操作時
+document.addEventListener(("keydown"),(event)=>{
+    const pressedKey = event.key;
+    console.log(pressedKey);
+    if(["0","1","2","3","4","5","6","7","8","9"].includes(pressedKey)){//数字キー
+        if(monitor.value =="0"){
+            monitor.value = pressedKey;
+        }else{
+            monitor.value += pressedKey; 
+        };
+
+    }else if(pressedKey === "."){//小数点キー
+        if(monitor.value === "0"){
+            monitor.value += pressedKey; 
+        }else if(monitor.value.slice(-1) === "."){
+            return;
+        }else{
+            monitor.value += pressedKey;
+        };
+
+    }else if(["+","-","*","/"].includes(pressedKey)){//演算キー
+        if(monitor.value === "0"){
+            return;
+        }else if(monitor.value.slice(-1) === "pressedKey"){
+            return;
+        }else{
+            monitor.value += pressedKey;
+        };
+
+    }else if(pressedKey === "Enter"){//エンター
+        try{
+            // monitor.value = eval(monitor.value);
+            // console.log("計算しました");
+            if(["+","-","*","/"].includes(monitor.value.slice(-1))){
+                monitor.value = monitor.value.slice(0,-1);
+                console.log("演算子を削除しました");
+            };
+            monitor.value = eval(monitor.value);
+            console.log("計算完了");
+        } catch(error){
+            monitor.value ="ERROR";
+            console.log("計算エラーです");
+        };
+    }else if(pressedKey === "Backspace"){//バックスペース
+        monitor.value = monitor.value.slice(0,-1)
+        console.log("１桁削除");
+        if(monitor.value === ""){
+            monitor.value = 0;
+        };
+    }else if(pressedKey === "Delete"){
+        monitor.value = 0;
+        console.log("リセットしました");
     };
 });
