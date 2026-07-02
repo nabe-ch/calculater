@@ -124,3 +124,10 @@ input{
     width: 90%;
     background-color: rgb(119, 119, 119);
 }
+
+.active-css{
+    opacity: 1;
+    position: relative;
+    top:5px;
+    box-shadow: none;
+}

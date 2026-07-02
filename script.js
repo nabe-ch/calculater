@@ -1,12 +1,12 @@
-// const one = document.querySelector(".one");
-// const two = document.querySelector(".two");
-// const three = document.querySelector(".three");
-// const four = document.querySelector(".four");
-// const five = document.querySelector(".five");
-// const six = document.querySelector(".six");
-// const seven = document.querySelector(".seven");
-// const eight = document.querySelector(".eight");
-// const nine = document.querySelector(".nine");
+const one = document.querySelector(".one");
+const two = document.querySelector(".two");
+const three = document.querySelector(".three");
+const four = document.querySelector(".four");
+const five = document.querySelector(".five");
+const six = document.querySelector(".six");
+const seven = document.querySelector(".seven");
+const eight = document.querySelector(".eight");
+const nine = document.querySelector(".nine");
 const zero = document.querySelector(".zero");
 const point = document.querySelector(".point");
 const plus = document.querySelector(".plus");
@@ -122,7 +122,7 @@ document.addEventListener(("click"),(event)=>{
 //テンキー操作時
 document.addEventListener(("keydown"),(event)=>{
     const pressedKey = event.key;
-    console.log(pressedKey);
+    // console.log(pressedKey);
     if(["0","1","2","3","4","5","6","7","8","9"].includes(pressedKey)){//数字キー
         if(monitor.value =="0"){
             monitor.value = pressedKey;
@@ -142,7 +142,7 @@ document.addEventListener(("keydown"),(event)=>{
     }else if(["+","-","*","/"].includes(pressedKey)){//演算キー
         if(monitor.value === "0"){
             return;
-        }else if(monitor.value.slice(-1) === "pressedKey"){
+        }else if(["+","-","*","/"].includes(monitor.value.slice(-1))){
             return;
         }else{
             monitor.value += pressedKey;
@@ -168,8 +168,20 @@ document.addEventListener(("keydown"),(event)=>{
         if(monitor.value === ""){
             monitor.value = 0;
         };
-    }else if(pressedKey === "Delete"){
+    }else if(pressedKey === "Delete"){//デリート
         monitor.value = 0;
         console.log("リセットしました");
     };
+});
+
+document.addEventListener(("keydown"),(event)=>{
+    const pressedKey = event.key;
+    const targetButton = document.querySelector(`button[value = "${pressedKey}"]`);
+    targetButton.classList.add("active-css");
+});
+
+document.addEventListener(("keyup"),(event)=>{
+    const pressedKey = event.key;
+    const targetButton = document.querySelector(`button[value = "${pressedKey}"]`);
+    targetButton.classList.remove("active-css");
 });
